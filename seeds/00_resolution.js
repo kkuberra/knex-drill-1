@@ -9,5 +9,8 @@ exports.seed = function(knex, Promise) {
         {id: 2, dueDate: '1997-05-01', resolution: "Do stand-up"},
         {id: 3, dueDate: '1997-09-01', resolution: "Start knitting"}
       ]);
-    });
+    })
+    .then(() => {
+      return knex.raw("SELECT setval('resolution_id_seq', (SELECT MAX(id) FROM resolution))")
+    })
 };
