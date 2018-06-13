@@ -4,6 +4,7 @@ const router = express.Router();
 const queries = require('../queries');
 
 router.get("/", (request, response, next) => {
+    console.log("hello")
     queries.list().then(resolutions => {
         response.json({resolutions});
     }).catch(next);
